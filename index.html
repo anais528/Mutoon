@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutoon - Islamic Study Workbooks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background-color: #c9a962;
+            color: #0a1628;
+        }
+
+        /* Navigation */
+        nav {
+            width: 100%;
+            background-color: #0a1628;
+            position: fixed;
+            top: 0;
+            height: 80px;
+            overflow: hidden;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+        }
+
+        nav ul {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            height: 100%;
+        }
+
+        nav li {
+            margin: 0;
+            display: inline-block;
+            height: 78px;
+            margin-bottom: 2px;
+            line-height: 80px;
+            padding: 0 2.5rem;
+            text-align: center;
+            color: rgba(201, 169, 98, 0.6);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 400;
+            font-family: 'Cinzel', serif;
+            transform: translateY(-100%);
+            position: relative;
+        }
+
+        nav li.active {
+            color: #c9a962;
+        }
+
+        nav li.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a962, transparent);
+        }
+
+        nav li:nth-child(1) {
+            animation: slideDown 0.6s 0.1s ease forwards;
+        }
+
+        nav li:nth-child(2) {
+            animation: slideDown 0.6s 0.2s ease forwards;
+        }
+
+        nav li:nth-child(3) {
+            animation: slideDown 0.6s 0.3s ease forwards;
+        }
+
+        nav li:nth-child(4) {
+            animation: slideDown 0.6s 0.4s ease forwards;
+        }
+
+        nav li:nth-child(5) {
+            animation: slideDown 0.6s 0.5s ease forwards;
+        }
+
+        nav li:hover {
+            color: #e3ca8a;
+            background-color: rgba(201, 169, 98, 0.05);
+        }
+
+        nav li:active {
+            background-color: rgba(201, 169, 98, 0.1);
+        }
+
+        nav li:hover ~ .slide {
+            opacity: 1;
+        }
+
+        nav li:nth-child(1):hover ~ .slide {
+            left: calc(50% - 250px);
+        }
+
+        nav li:nth-child(2):hover ~ .slide {
+            left: calc(50% - 80px);
+        }
+
+        nav li:nth-child(3):hover ~ .slide {
+            left: 50%;
+        }
+
+        nav li:nth-child(4):hover ~ .slide {
+            left: calc(50% + 90px);
+        }
+
+        nav li:nth-child(5):hover ~ .slide {
+            left: calc(50% + 250px);
+        }
+
+        nav li.slide {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.3), transparent);
+            z-index: -1;
+            height: 100%;
+            width: 150px;
+            padding: 0;
+            margin: 0;
+            transition: left 0.4s ease, opacity 0.3s ease;
+            transform: translateY(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2840 50%, #0d1b33 100%);
+            min-height: 100vh;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background elements */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        /* Decorative lines */
+        .deco-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.3), transparent);
+            opacity: 0;
+        }
+
+        .deco-line.top {
+            top: 20%;
+            left: 0;
+            right: 0;
+            animation: expandLine 1.5s 1s ease forwards;
+        }
+
+        .deco-line.bottom {
+            bottom: 20%;
+            left: 0;
+            right: 0;
+            animation: expandLine 1.5s 1.2s ease forwards;
+        }
+
+        .deco-corner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+            animation: fadeIn 1s 1.5s ease forwards;
+        }
+
+        .deco-corner.top-left {
+            top: 15%;
+            left: 8%;
+            border-top: 2px solid rgba(201, 169, 98, 0.3);
+            border-left: 2px solid rgba(201, 169, 98, 0.3);
+        }
+
+        .deco-corner.bottom-right {
+            bottom: 15%;
+            right: 8%;
+            border-bottom: 2px solid rgba(201, 169, 98, 0.3);
+            border-right: 2px solid rgba(201, 169, 98, 0.3);
+        }
+
+        .hero .title {
+            max-width: 70%;
+            width: 100%;
+            align-self: center;
+            margin: 0 auto;
+            overflow: hidden;
+            padding-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero .title span {
+            display: block;
+            color: #e8dfd8;
+            width: 100%;
+            text-transform: uppercase;
+            transform: translateY(150%);
+            animation: slideUp 1s ease both;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .hero .title span.main {
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-family: 'Amiri', serif;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #e8dfd8 0%, #c9a962 50%, #e8dfd8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 1.2s ease both;
+        }
+
+        .hero .title span.subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            animation: slideUp 1s 0.3s ease both;
+            font-family: 'Cinzel', serif;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: rgba(201, 169, 98, 0.8);
+        }
+
+        .hero .title span.description {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            animation: slideUp 1s 0.5s ease both;
+            margin-top: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: rgba(232, 223, 216, 0.7);
+            text-transform: none;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid #c9a962;
+            color: #c9a962;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeIn 1s 0.8s ease forwards;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #c9a962;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: #0a1628;
+            border-color: #e3ca8a;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(201, 169, 98, 0.6);
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            opacity: 0;
+            animation: fadeIn 1s 1.5s ease forwards;
+            z-index: 10;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, #c9a962, transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 4rem;
+            background: #faf7f2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #c9a962;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: #0a1628;
+            line-height: 1.2;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #2a2a2a;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: #6b2d42;
+            font-weight: 600;
+        }
+
+        /* Workbooks Section */
+        .workbooks {
+            padding: 8rem 4rem;
+            background: white;
+        }
+
+        .workbooks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .workbook-card {
+            background: #faf7f2;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .workbook-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .workbook-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(145deg, #6b2d42 0%, #4a1a2c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .workbook-cover {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .workbook-title-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: #c9a962;
+            margin-bottom: 1rem;
+        }
+
+        .workbook-title-english {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #e8dfd8;
+            font-weight: 400;
+        }
+
+        .workbook-info {
+            padding: 2rem;
+        }
+
+        .workbook-badge {
+            display: inline-block;
+            padding: 0.4rem 0.9rem;
+            background: #c9a962;
+            color: #0a1628;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .workbook-info h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0a1628;
+            margin-bottom: 0.75rem;
+        }
+
+        .workbook-info p {
+            font-size: 0.95rem;
+            color: #5a5a5a;
+            line-height: 1.6;
+        }
+
+        /* For Individuals Section */
+        .for-individuals {
+            padding: 8rem 4rem;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2840 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .for-individuals .section-tag {
+            color: #e3ca8a;
+        }
+
+        .for-individuals .section-title {
+            color: white;
+        }
+
+        .individuals-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .individuals-content p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* For Masajid Section */
+        .for-masajid {
+            padding: 8rem 4rem;
+            background: #f5efe6;
+        }
+
+        .masajid-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 3rem auto;
+        }
+
+        .masajid-feature {
+            padding: 2.5rem 2rem;
+            background: white;
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .masajid-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border-color: rgba(201, 169, 98, 0.2);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
+            border-radius: 50%;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #0a1628;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .masajid-feature h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0a1628;
+            margin-bottom: 0.75rem;
+        }
+
+        .masajid-feature p {
+            font-size: 0.95rem;
+            color: #5a5a5a;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 4rem;
+            background: linear-gradient(135deg, #4a1a2c 0%, #6b2d42 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .contact .section-tag {
+            color: #e3ca8a;
+        }
+
+        .contact .section-title {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #6b2d42;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 4rem;
+            background: #0a1628;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c9a962;
+            margin-bottom: 1rem;
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-button svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(150%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scaleY(0.5);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes expandLine {
+            0% {
+                transform: scaleX(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+
+        /* Fade on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                height: 60px;
+            }
+
+            nav li {
+                font-size: 0.7rem;
+                padding: 0 1rem;
+                letter-spacing: 0.1em;
+                height: 58px;
+                line-height: 60px;
+            }
+
+            nav ul {
+                left: 0;
+                transform: none;
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            nav li.slide {
+                display: none;
+            }
+
+            .hero .title {
+                max-width: 90%;
+            }
+
+            .hero .title span.main {
+                letter-spacing: 0.1em;
+            }
+
+            .hero .title span.subtitle {
+                letter-spacing: 0.2em;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 0.75rem;
+            }
+
+            .deco-corner {
+                width: 60px;
+                height: 60px;
+            }
+
+            .about,
+            .workbooks,
+            .for-individuals,
+            .for-masajid,
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .workbooks-grid,
+            .masajid-features {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-button {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 50px;
+                height: 50px;
+            }
+
+            .whatsapp-button svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#workbooks">Workbooks</a></li>
+            <li><a href="#masajid">Masajid</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="slide"></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="deco-line top"></div>
+        <div class="deco-line bottom"></div>
+        <div class="deco-corner top-left"></div>
+        <div class="deco-corner bottom-right"></div>
+        
+        <div class="title">
+            <span class="main">متون</span>
+            <span class="subtitle">Mutoon</span>
+            <span class="description">
+                Making Islamic Studies Accessible to Every Student of Knowledge
+            </span>
+            <button class="cta-button" onclick="document.getElementById('workbooks').scrollIntoView({behavior: 'smooth'})">Explore Collection</button>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="section-header fade-in">
+            <p class="section-tag">Our Purpose</p>
+            <h2 class="section-title">Bridging Language & Knowledge</h2>
+        </div>
+        <div class="about-content fade-in">
+            <p>Islamic scholarship has been preserved in classical Arabic texts for centuries. For non-Arabic speakers, accessing this sacred knowledge can feel overwhelming—scattered PDFs, confusing notes, and no clear path forward.</p>
+            <p>Mutoon exists to change that. We create <span class="highlight">structured, interactive workbooks</span> that transform classical texts into accessible learning tools. Our workbooks don't just translate—they guide you through the material with spaces to write, reflect, and truly engage with the knowledge.</p>
+            <p>We believe that <span class="highlight">language should never be a barrier</span> between a student and their heritage. With Mutoon, you can organically study Islamic sciences at your own pace, building a personal library of knowledge that becomes part of your journey toward Allah.</p>
+        </div>
+    </section>
+
+    <section class="workbooks" id="workbooks">
+        <div class="section-header fade-in">
+            <p class="section-tag">Our Collection</p>
+            <h2 class="section-title">Start Your Journey Today</h2>
+        </div>
+        <div class="workbooks-grid">
+            <div class="workbook-card fade-in">
+                <div class="workbook-image">
+                    <div class="workbook-cover">
+                        <div class="workbook-title-arabic">الأصول الثلاثة</div>
+                        <div class="workbook-title-english">The Three Principles</div>
+                    </div>
+                </div>
+                <div class="workbook-info">
+                    <span class="workbook-badge">Now Available</span>
+                    <h3>The Three Principles</h3>
+                    <p>Begin your journey with this foundational text. Learn the three fundamental principles every Muslim must know, with guided exercises and reflection spaces.</p>
+                </div>
+            </div>
+            <div class="workbook-card fade-in">
+                <div class="workbook-image">
+                    <div class="workbook-cover">
+                        <div class="workbook-title-arabic">القواعد الأربع</div>
+                        <div class="workbook-title-english">The Four Principles</div>
+                    </div>
+                </div>
+                <div class="workbook-info">
+                    <span class="workbook-badge" style="background: #6b2d42; color: #e3ca8a;">Coming Soon</span>
+                    <h3>The Four Principles</h3>
+                    <p>Continue building your foundation with the four principles that distinguish Tawheed from Shirk. Comprehensive workbook with practical applications.</p>
+                </div>
+            </div>
+            <div class="workbook-card fade-in">
+                <div class="workbook-image">
+                    <div class="workbook-cover">
+                        <div class="workbook-title-arabic">كتاب التوحيد</div>
+                        <div class="workbook-title-english">Kitab At-Tawheed</div>
+                    </div>
+                </div>
+                <div class="workbook-info">
+                    <span class="workbook-badge" style="background: #6b2d42; color: #e3ca8a;">Coming Soon</span>
+                    <h3>Kitab At-Tawheed</h3>
+                    <p>Deepen your understanding of Tawheed with this comprehensive study. Detailed annotations and study questions guide your learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="for-individuals">
+        <div class="individuals-content fade-in">
+            <div class="section-header">
+                <p class="section-tag">For Individual Learners</p>
+                <h2 class="section-title">Order Your First Workbook</h2>
+            </div>
+            <p>Start building your personal library of Islamic knowledge today. Each workbook becomes a precious artifact of your learning journey—your notes, your reflections, your growth.</p>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Order Now</button>
+        </div>
+    </section>
+
+    <section class="for-masajid" id="masajid">
+        <div class="section-header fade-in">
+            <p class="section-tag">For Masajid & Institutes</p>
+            <h2 class="section-title">Partner With Us for Your Next Event</h2>
+        </div>
+        <div class="masajid-features">
+            <div class="masajid-feature fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4>Conferences</h4>
+                <p>Provide attendees with workbooks they can use during and after your event</p>
+            </div>
+            <div class="masajid-feature fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <h4>Study Circles</h4>
+                <p>Structured workbooks perfect for halaqaat and group learning programmes</p>
+            </div>
+            <div class="masajid-feature fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <h4>Weekend Schools</h4>
+                <p>Consistent curriculum materials for your educational programmes</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="section-header fade-in">
+            <p class="section-tag">Get in Touch</p>
+            <h2 class="section-title">Ready to Begin?</h2>
+        </div>
+        <div class="contact-content fade-in">
+            <p>Whether you're an individual learner or representing a masjid or institute, we're here to help you access authentic Islamic knowledge.</p>
+            <div class="contact-buttons">
+                <a href="mailto:contact@mutoon.org" class="cta-button">Email Us</a>
+                <a href="#" class="btn-secondary">Request Samples</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">متون</div>
+        <div class="footer-content">
+            <p>Making Islamic studies accessible to non-Arabic speakers through structured, interactive workbooks. Building bridges between students and sacred knowledge.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Mutoon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/1234567890?text=Hi%20Mutoon,%20I'd%20like%20to%20learn%20more%20about%20your%20workbooks" class="whatsapp-button" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.738 5.484 2.026 7.773L0 32l8.448-2.016A15.923 15.923 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.672 0-5.203-.795-7.322-2.164l-.526-.313-5.458 1.302 1.302-5.458-.313-.526A13.287 13.287 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333z"/>
+            <path d="M23.023 19.375c-.38-.19-2.25-1.11-2.597-1.237-.348-.126-.6-.19-.853.19-.253.38-.98 1.237-1.202 1.49-.221.253-.443.285-.823.095-.38-.19-1.603-.59-3.052-1.883-1.128-.995-1.89-2.224-2.111-2.604-.221-.38-.024-.585.166-.774.17-.17.38-.443.57-.665.19-.221.253-.38.38-.633.126-.253.063-.475-.032-.665-.095-.19-.853-2.055-1.169-2.815-.308-.74-.62-.64-.853-.652-.221-.012-.475-.015-.728-.015s-.665.095-.948.475c-.285.38-1.075 1.05-1.075 2.56s1.1 2.97 1.253 3.176c.152.207 2.163 3.303 5.24 4.632.732.316 1.303.505 1.748.647.735.234 1.404.2 1.933.122.59-.088 1.817-.743 2.072-1.46.254-.718.254-1.333.177-1.46-.076-.127-.329-.207-.709-.397z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Add active state to nav items on click
+        const navItems = document.querySelectorAll('nav li:not(.slide)');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        // Smooth parallax effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const decorations = document.querySelectorAll('.deco-corner, .deco-line');
+            decorations.forEach((deco, index) => {
+                const speed = (index + 1) * 5;
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                deco.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Fade in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
