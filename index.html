@@ -253,7 +253,7 @@
             text-transform: uppercase;
             transform: translateY(150%);
             animation: slideUp 1s ease both;
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
         }
 
@@ -267,13 +267,14 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: slideUp 1.2s ease both;
+            font-weight: 700;
         }
 
         .hero .title span.subtitle {
             font-size: clamp(1.2rem, 2vw, 1.8rem);
             animation: slideUp 1s 0.3s ease both;
             font-family: 'Cinzel', serif;
-            font-weight: 300;
+            font-weight: 700;
             letter-spacing: 0.3em;
             color: rgba(201, 169, 98, 0.8);
         }
@@ -282,7 +283,7 @@
             font-size: clamp(0.9rem, 1.5vw, 1.1rem);
             animation: slideUp 1s 0.5s ease both;
             margin-top: 2rem;
-            font-weight: 400;
+            font-weight: 600;
             letter-spacing: 0.1em;
             color: rgba(232, 223, 216, 0.7);
             text-transform: none;
@@ -360,7 +361,7 @@
         /* About Section */
         .about {
             padding: 8rem 4rem;
-            background: #faf7f2;
+            background: linear-gradient(to bottom, #faf7f2, #f5efe6);
         }
 
         .section-header {
@@ -400,95 +401,182 @@
         }
 
         .highlight {
-            color: #6b2d42;
+            color: #1a2840;
             font-weight: 600;
         }
 
         /* Workbooks Section */
         .workbooks {
             padding: 8rem 4rem;
-            background: white;
+            background: linear-gradient(to bottom, white, #fafafa);
+        }
+
+        .workbooks-carousel {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 2rem 0 4rem;
         }
 
         .workbooks-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex;
+            gap: 3.5rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 0 2rem 2rem;
+            scrollbar-width: thin;
+            scrollbar-color: #c9a962 #f5efe6;
         }
 
-        .workbook-card {
-            background: #faf7f2;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .workbooks-grid::-webkit-scrollbar {
+            height: 8px;
         }
 
-        .workbook-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        .workbooks-grid::-webkit-scrollbar-track {
+            background: #f5efe6;
+            border-radius: 10px;
         }
 
-        .workbook-image {
-            width: 100%;
-            height: 350px;
-            background: linear-gradient(145deg, #6b2d42 0%, #4a1a2c 100%);
+        .workbooks-grid::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #c9a962, #e3ca8a);
+            border-radius: 10px;
+        }
+
+        .workbooks-grid::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(90deg, #e3ca8a, #c9a962);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
+            border: none;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);
+            transition: all 0.3s ease;
         }
 
-        .workbook-cover {
-            text-align: center;
-            padding: 2rem;
+        .carousel-nav:hover {
+            background: linear-gradient(135deg, #e3ca8a 0%, #c9a962 100%);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(201, 169, 98, 0.6);
         }
 
-        .workbook-title-arabic {
-            font-family: 'Amiri', serif;
-            font-size: 2.5rem;
-            color: #c9a962;
-            margin-bottom: 1rem;
+        .carousel-nav.prev {
+            left: 1rem;
         }
 
-        .workbook-title-english {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            color: #e8dfd8;
-            font-weight: 400;
+        .carousel-nav.next {
+            right: 1rem;
         }
 
-        .workbook-info {
-            padding: 2rem;
+        .carousel-nav svg {
+            width: 24px;
+            height: 24px;
+            fill: #0a1628;
         }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(201, 169, 98, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+
 
         .workbook-badge {
             display: inline-block;
-            padding: 0.4rem 0.9rem;
-            background: #c9a962;
+            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
             color: #0a1628;
             font-family: 'Cinzel', serif;
             font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            font-weight: 700;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            border-radius: 2px;
-            margin-bottom: 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 2px 8px rgba(201, 169, 98, 0.3);
         }
 
         .workbook-info h3 {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: #0a1628;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
         }
 
         .workbook-info p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #5a5a5a;
-            line-height: 1.6;
+            line-height: 1.8;
+        }
+
+        /* Simplified Card Styles */
+        .workbook-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            min-width: 280px;
+            flex-shrink: 0;
+        }
+
+        .workbook-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 70px rgba(10, 22, 40, 0.2);
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+
+        .workbook-card-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .workbook-card-info {
+            padding: 1.5rem;
+            text-align: center;
+            background: white;
+        }
+
+        .workbook-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0a1628;
+            margin: 0;
+            line-height: 1.4;
         }
 
         /* For Individuals Section */
@@ -534,29 +622,31 @@
         }
 
         .masajid-feature {
-            padding: 2.5rem 2rem;
+            padding: 3rem 2rem;
             background: white;
-            border-radius: 4px;
+            border-radius: 8px;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(201, 169, 98, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
         }
 
         .masajid-feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            border-color: rgba(201, 169, 98, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(10, 22, 40, 0.12);
+            border-color: rgba(201, 169, 98, 0.3);
         }
 
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 1.5rem;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
             border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.3);
         }
 
         .feature-icon svg {
@@ -569,22 +659,23 @@
 
         .masajid-feature h4 {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: #0a1628;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .masajid-feature p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #5a5a5a;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         /* Contact Section */
         .contact {
             padding: 8rem 4rem;
-            background: linear-gradient(135deg, #4a1a2c 0%, #6b2d42 100%);
+            background: linear-gradient(135deg, #0a1628 0%, #1a2840 100%);
             text-align: center;
             color: white;
         }
@@ -634,7 +725,7 @@
 
         .btn-secondary:hover {
             background: white;
-            color: #6b2d42;
+            color: #0a1628;
         }
 
         /* Footer */
@@ -826,7 +917,14 @@
                 padding: 4rem 1.5rem;
             }
 
-            .workbooks-grid,
+            .workbooks-grid {
+                padding: 0 1rem 2rem;
+            }
+
+            .workbook-card {
+                min-width: 300px;
+            }
+
             .masajid-features {
                 grid-template-columns: 1fr;
             }
@@ -892,6 +990,11 @@
             <p>Islamic scholarship has been preserved in classical Arabic texts for centuries. For non-Arabic speakers, accessing this sacred knowledge can feel overwhelming—scattered PDFs, confusing notes, and no clear path forward.</p>
             <p>Mutoon exists to change that. We create <span class="highlight">structured, interactive workbooks</span> that transform classical texts into accessible learning tools. Our workbooks don't just translate—they guide you through the material with spaces to write, reflect, and truly engage with the knowledge.</p>
             <p>We believe that <span class="highlight">language should never be a barrier</span> between a student and their heritage. With Mutoon, you can organically study Islamic sciences at your own pace, building a personal library of knowledge that becomes part of your journey toward Allah.</p>
+            
+            <div style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid rgba(201, 169, 98, 0.2);">
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 600; color: #0a1628; margin-bottom: 1rem; text-align: center;">Authenticity & Credibility</h3>
+                <p>Our commitment to authenticity is absolute. We do not add anything from ourselves. Every piece of content in our workbooks is taken directly from <span class="highlight">official websites of the scholars</span> (shuyookh), only reformatted for your convenience. We serve as a bridge, not an interpreter—preserving the integrity of the original teachings while making them accessible to English-speaking students.</p>
+            </div>
         </div>
     </section>
 
@@ -900,45 +1003,80 @@
             <p class="section-tag">Our Collection</p>
             <h2 class="section-title">Start Your Journey Today</h2>
         </div>
-        <div class="workbooks-grid">
-            <div class="workbook-card fade-in">
-                <div class="workbook-image">
-                    <div class="workbook-cover">
-                        <div class="workbook-title-arabic">الأصول الثلاثة</div>
-                        <div class="workbook-title-english">The Three Principles</div>
+        
+        <!-- Workbooks Carousel -->
+        <div class="workbooks-carousel">
+            <button class="carousel-nav prev" onclick="scrollCarousel(-1)" aria-label="Previous">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <button class="carousel-nav next" onclick="scrollCarousel(1)" aria-label="Next">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+            <div class="workbooks-grid" id="workbooksCarousel">
+                <div class="workbook-card fade-in">
+                    <img src="GOF1.jpeg" alt="Glorification of Knowledge" class="workbook-card-image">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">Glorification of Knowledge</h3>
                     </div>
                 </div>
-                <div class="workbook-info">
-                    <span class="workbook-badge">Now Available</span>
-                    <h3>The Three Principles</h3>
-                    <p>Begin your journey with this foundational text. Learn the three fundamental principles every Muslim must know, with guided exercises and reflection spaces.</p>
+                <div class="workbook-card fade-in">
+                    <img src="3fp.png" alt="The Three Principles" class="workbook-card-image">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">The Three Principles</h3>
+                    </div>
+                </div>
+                <div class="workbook-card fade-in">
+                    <img src="GOF2.jpeg" alt="The Four Principles" class="workbook-card-image">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">The Four Principles</h3>
+                    </div>
+                </div>
+                <div class="workbook-card fade-in">
+                    <img src="GOF3.jpeg" alt="Kitab At-Tawheed" class="workbook-card-image">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">Kitab At-Tawheed</h3>
+                    </div>
                 </div>
             </div>
-            <div class="workbook-card fade-in">
-                <div class="workbook-image">
-                    <div class="workbook-cover">
-                        <div class="workbook-title-arabic">القواعد الأربع</div>
-                        <div class="workbook-title-english">The Four Principles</div>
-                    </div>
-                </div>
-                <div class="workbook-info">
-                    <span class="workbook-badge" style="background: #6b2d42; color: #e3ca8a;">Coming Soon</span>
-                    <h3>The Four Principles</h3>
-                    <p>Continue building your foundation with the four principles that distinguish Tawheed from Shirk. Comprehensive workbook with practical applications.</p>
-                </div>
+            <div class="carousel-indicators">
+                <div class="carousel-indicator active" onclick="goToSlide(0)"></div>
+                <div class="carousel-indicator" onclick="goToSlide(1)"></div>
+                <div class="carousel-indicator" onclick="goToSlide(2)"></div>
+                <div class="carousel-indicator" onclick="goToSlide(3)"></div>
             </div>
-            <div class="workbook-card fade-in">
-                <div class="workbook-image">
-                    <div class="workbook-cover">
-                        <div class="workbook-title-arabic">كتاب التوحيد</div>
-                        <div class="workbook-title-english">Kitab At-Tawheed</div>
-                    </div>
-                </div>
-                <div class="workbook-info">
-                    <span class="workbook-badge" style="background: #6b2d42; color: #e3ca8a;">Coming Soon</span>
-                    <h3>Kitab At-Tawheed</h3>
-                    <p>Deepen your understanding of Tawheed with this comprehensive study. Detailed annotations and study questions guide your learning.</p>
-                </div>
+        </div>
+
+        <!-- How Our Workbooks Work Section -->
+        <div style="max-width: 900px; margin: 5rem auto 0; padding: 3rem; background: #faf7f2; border-radius: 4px; border: 1px solid rgba(201, 169, 98, 0.2);">
+            <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 600; color: #0a1628; text-align: center; margin-bottom: 2rem;">How Our Workbooks Work</h3>
+            <div style="text-align: left; line-height: 1.8; color: #2a2a2a;">
+                <p style="margin-bottom: 1.5rem; font-size: 1.05rem;">Each Mutoon workbook is meticulously designed to provide an immersive and effective learning experience:</p>
+                <ul style="list-style: none; padding-left: 0; font-size: 1.05rem;">
+                    <li style="margin-bottom: 1.2rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c9a962; font-weight: 600;">✦</span>
+                        <strong style="color: #1a2840;">Color-Coded Side-by-Side Format:</strong> Arabic matn alongside English translation, making it easy to follow and learn both languages simultaneously
+                    </li>
+                    <li style="margin-bottom: 1.2rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c9a962; font-weight: 600;">✦</span>
+                        <strong style="color: #1a2840;">Structured Notebook Sections:</strong> The text is divided into clear sections with dedicated space to write notes under each subpoint
+                    </li>
+                    <li style="margin-bottom: 1.2rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c9a962; font-weight: 600;">✦</span>
+                        <strong style="color: #1a2840;">QR Codes to Relevant Lessons:</strong> Quick access to audio/video lessons from scholars to deepen your understanding
+                    </li>
+                    <li style="margin-bottom: 1.2rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c9a962; font-weight: 600;">✦</span>
+                        <strong style="color: #1a2840;">Table of Keywords:</strong> Essential vocabulary and terms for quick reference and memorization
+                    </li>
+                    <li style="margin-bottom: 0; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c9a962; font-weight: 600;">✦</span>
+                        <strong style="color: #1a2840;">Space for Personal Summaries:</strong> Create your own reflections and summaries to solidify your learning
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -982,6 +1120,36 @@
                 <p>Consistent curriculum materials for your educational programmes</p>
             </div>
         </div>
+
+        <!-- Bulk Order Section -->
+        <div style="max-width: 900px; margin: 4rem auto 0; padding: 4rem 3rem; background: linear-gradient(135deg, white 0%, #fafafa 100%); border-radius: 12px; text-align: center; box-shadow: 0 15px 50px rgba(10, 22, 40, 0.1); border: 2px solid rgba(201, 169, 98, 0.2);">
+            <div class="feature-icon" style="margin: 0 auto 2rem; background: linear-gradient(135deg, #0a1628 0%, #1a2840 100%);">
+                <svg viewBox="0 0 24 24" style="stroke: #e3ca8a;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #c9a962; margin-bottom: 1rem;">Special Pricing Available</p>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 600; color: #0a1628; margin-bottom: 1.5rem; line-height: 1.3;">Equip Your Entire Community</h3>
+            <p style="font-size: 1.1rem; color: #5a5a5a; line-height: 1.9; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Empower your students and community members with the tools they need to deeply engage with Islamic scholarship. Our bulk ordering program makes it easy and affordable to provide high-quality workbooks for:</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 600px; margin: 0 auto 2.5rem; text-align: left;">
+                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962;">
+                    <p style="font-family: 'Cinzel', serif; font-weight: 600; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">📚 Study Programs</p>
+                    <p style="font-size: 0.9rem; color: #777; line-height: 1.6; margin: 0;">Long-term classes & courses</p>
+                </div>
+                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962;">
+                    <p style="font-family: 'Cinzel', serif; font-weight: 600; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">🎓 Conferences</p>
+                    <p style="font-size: 0.9rem; color: #777; line-height: 1.6; margin: 0;">One-time events & seminars</p>
+                </div>
+                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962;">
+                    <p style="font-family: 'Cinzel', serif; font-weight: 600; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">👥 Halaqaat</p>
+                    <p style="font-size: 0.9rem; color: #777; line-height: 1.6; margin: 0;">Regular study circles</p>
+                </div>
+                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962;">
+                    <p style="font-family: 'Cinzel', serif; font-weight: 600; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">🏫 Weekend Schools</p>
+                    <p style="font-size: 0.9rem; color: #777; line-height: 1.6; margin: 0;">Youth education programs</p>
+                </div>
+            </div>
+            <p style="font-size: 1.05rem; color: #1a2840; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 500;">We offer flexible quantities and competitive pricing to fit your budget. Contact us today to discuss your needs and receive a personalized quote.</p>
+            <button class="cta-button" style="background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); color: #0a1628; border: none; box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get Your Custom Quote</button>
+        </div>
     </section>
 
     <section class="contact" id="contact">
@@ -1009,7 +1177,7 @@
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/1234567890?text=Hi%20Mutoon,%20I'd%20like%20to%20learn%20more%20about%20your%20workbooks" class="whatsapp-button" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+    <a href="https://wa.me/447552908868?text=Hi%20Mutoon,%20I'd%20like%20to%20learn%20more%20about%20your%20workbooks" class="whatsapp-button" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.738 5.484 2.026 7.773L0 32l8.448-2.016A15.923 15.923 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.672 0-5.203-.795-7.322-2.164l-.526-.313-5.458 1.302 1.302-5.458-.313-.526A13.287 13.287 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333z"/>
             <path d="M23.023 19.375c-.38-.19-2.25-1.11-2.597-1.237-.348-.126-.6-.19-.853.19-.253.38-.98 1.237-1.202 1.49-.221.253-.443.285-.823.095-.38-.19-1.603-.59-3.052-1.883-1.128-.995-1.89-2.224-2.111-2.604-.221-.38-.024-.585.166-.774.17-.17.38-.443.57-.665.19-.221.253-.38.38-.633.126-.253.063-.475-.032-.665-.095-.19-.853-2.055-1.169-2.815-.308-.74-.62-.64-.853-.652-.221-.012-.475-.015-.728-.015s-.665.095-.948.475c-.285.38-1.075 1.05-1.075 2.56s1.1 2.97 1.253 3.176c.152.207 2.163 3.303 5.24 4.632.732.316 1.303.505 1.748.647.735.234 1.404.2 1.933.122.59-.088 1.817-.743 2.072-1.46.254-.718.254-1.333.177-1.46-.076-.127-.329-.207-.709-.397z"/>
@@ -1074,6 +1242,69 @@
                     });
                 }
             });
+        });
+
+        // Carousel functionality
+        const carousel = document.getElementById('workbooksCarousel');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        let currentSlide = 0;
+        let autoScrollInterval;
+
+        function scrollCarousel(direction) {
+            const cardWidth = carousel.querySelector('.workbook-card').offsetWidth;
+            const gap = 56; // 3.5rem gap
+            const scrollAmount = (cardWidth + gap) * direction;
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            
+            // Update current slide
+            currentSlide = Math.max(0, Math.min(3, currentSlide + direction));
+            updateIndicators();
+            resetAutoScroll();
+        }
+
+        function goToSlide(index) {
+            const cardWidth = carousel.querySelector('.workbook-card').offsetWidth;
+            const gap = 56;
+            carousel.scrollTo({ left: (cardWidth + gap) * index, behavior: 'smooth' });
+            currentSlide = index;
+            updateIndicators();
+            resetAutoScroll();
+        }
+
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        function autoScroll() {
+            currentSlide = (currentSlide + 1) % 4;
+            goToSlide(currentSlide);
+        }
+
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(autoScroll, 5000); // Auto-scroll every 5 seconds
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
+
+        // Start auto-scrolling
+        startAutoScroll();
+
+        // Pause auto-scroll on hover
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            startAutoScroll();
         });
     </script>
 </body>
