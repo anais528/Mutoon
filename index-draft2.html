@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Mutoon creates structured, interactive Islamic study workbooks that make classical Arabic texts accessible to English-speaking students. Transform your learning journey with authentic, scholar-verified content.">
+    <meta name="keywords" content="Islamic studies, Arabic workbooks, Islamic education, Islamic study materials, Tawheed, Three Principles, Islamic learning, matn, mutoon, Islamic knowledge">
+    <meta name="author" content="Mutoon">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.mutoon.co.uk">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mutoon - Islamic Study Workbooks">
+    <meta property="og:description" content="Making Islamic studies accessible through structured, interactive workbooks. Bridge the language gap and deepen your understanding of classical texts.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mutoon.co.uk">
+    <meta property="og:image" content="https://www.mutoon.co.uk/og-image.jpg">
+    <meta property="og:site_name" content="Mutoon">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mutoon - Islamic Study Workbooks">
+    <meta name="twitter:description" content="Making Islamic studies accessible through structured, interactive workbooks.">
+    <meta name="twitter:image" content="https://www.mutoon.co.uk/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <title>Mutoon - Islamic Study Workbooks | Accessible Islamic Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Amiri:wght@400;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Color Palette */
+            --primary-gold: #c9a962;
+            --primary-gold-light: #e3ca8a;
+            --primary-gold-dark: #b08d47;
+            --primary-navy: #0a1628;
+            --primary-navy-light: #1a2840;
+            --primary-navy-lighter: #0d1b33;
+            
+            /* Neutral Colors */
+            --neutral-50: #fafafa;
+            --neutral-100: #f5efe6;
+            --neutral-200: #faf7f2;
+            --neutral-300: #e8dfd8;
+            --neutral-400: #999;
+            --neutral-500: #666;
+            --neutral-600: #555;
+            --neutral-700: #333;
+            --neutral-800: #2a2a2a;
+            --neutral-900: #0a0a0a;
+            
+            /* Typography */
+            --font-display: 'Amiri', serif;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Lora', serif;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+            --spacing-4xl: 8rem;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 50%;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.4s ease;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background-color: #c9a962;
+            color: #0a1628;
+        }
+
+        /* Skip Navigation for Accessibility */
+        .skip-nav {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--primary-gold);
+            color: var(--primary-navy);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            z-index: 10000;
+            transition: top var(--transition-base);
+        }
+
+        .skip-nav:focus {
+            top: 0;
+        }
+
+        /* Navigation */
+        nav {
+            width: 100%;
+            background-color: #0a1628;
+            position: fixed;
+            top: 0;
+            height: 80px;
+            overflow: hidden;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+        }
+
+        nav ul {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            height: 100%;
+        }
+
+        nav li {
+            margin: 0;
+            display: inline-block;
+            height: 78px;
+            margin-bottom: 2px;
+            line-height: 80px;
+            padding: 0 2.5rem;
+            text-align: center;
+            color: rgba(201, 169, 98, 0.6);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+            transform: translateY(-100%);
+            position: relative;
+        }
+
+        nav li.active {
+            color: #c9a962;
+        }
+
+        nav li.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a962, transparent);
+        }
+
+        nav li:nth-child(1) {
+            animation: slideDown 0.6s 0.1s ease forwards;
+        }
+
+        nav li:nth-child(2) {
+            animation: slideDown 0.6s 0.2s ease forwards;
+        }
+
+        nav li:nth-child(3) {
+            animation: slideDown 0.6s 0.3s ease forwards;
+        }
+
+        nav li:nth-child(4) {
+            animation: slideDown 0.6s 0.4s ease forwards;
+        }
+
+        nav li:nth-child(5) {
+            animation: slideDown 0.6s 0.5s ease forwards;
+        }
+
+        nav li:hover {
+            color: #e3ca8a;
+            background-color: rgba(201, 169, 98, 0.05);
+        }
+
+        nav li:active {
+            background-color: rgba(201, 169, 98, 0.1);
+        }
+
+        nav li:hover ~ .slide {
+            opacity: 1;
+        }
+
+        nav li:nth-child(1):hover ~ .slide {
+            left: calc(50% - 250px);
+        }
+
+        nav li:nth-child(2):hover ~ .slide {
+            left: calc(50% - 80px);
+        }
+
+        nav li:nth-child(3):hover ~ .slide {
+            left: 50%;
+        }
+
+        nav li:nth-child(4):hover ~ .slide {
+            left: calc(50% + 90px);
+        }
+
+        nav li:nth-child(5):hover ~ .slide {
+            left: calc(50% + 250px);
+        }
+
+        nav li.slide {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.3), transparent);
+            z-index: -1;
+            height: 100%;
+            width: 150px;
+            padding: 0;
+            margin: 0;
+            transition: left 0.4s ease, opacity 0.3s ease;
+            transform: translateY(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2840 50%, #0d1b33 100%);
+            min-height: 100vh;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background elements */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        /* Decorative lines */
+        .deco-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.3), transparent);
+            opacity: 0;
+        }
+
+        .deco-line.top {
+            top: 20%;
+            left: 0;
+            right: 0;
+            animation: expandLine 1.5s 1s ease forwards;
+        }
+
+        .deco-line.bottom {
+            bottom: 20%;
+            left: 0;
+            right: 0;
+            animation: expandLine 1.5s 1.2s ease forwards;
+        }
+
+        .deco-corner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+            animation: fadeIn 1s 1.5s ease forwards;
+        }
+
+        .deco-corner.top-left {
+            top: 15%;
+            left: 8%;
+            border-top: 2px solid rgba(201, 169, 98, 0.3);
+            border-left: 2px solid rgba(201, 169, 98, 0.3);
+        }
+
+        .deco-corner.bottom-right {
+            bottom: 15%;
+            right: 8%;
+            border-bottom: 2px solid rgba(201, 169, 98, 0.3);
+            border-right: 2px solid rgba(201, 169, 98, 0.3);
+        }
+
+        .hero .title {
+            max-width: 70%;
+            width: 100%;
+            align-self: center;
+            margin: 0 auto;
+            overflow: hidden;
+            padding-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero .title span {
+            display: block;
+            color: #e8dfd8;
+            width: 100%;
+            text-transform: uppercase;
+            transform: translateY(150%);
+            animation: slideUp 1s ease both;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .hero .title span.main {
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-family: 'Amiri', serif;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #e8dfd8 0%, #c9a962 50%, #e8dfd8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 1.2s ease both;
+            font-weight: 700;
+        }
+
+        .hero .title span.subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            animation: slideUp 1s 0.3s ease both;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            color: rgba(201, 169, 98, 0.8);
+        }
+
+        .hero .title span.description {
+            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+            animation: slideUp 1s 0.5s ease both;
+            margin-top: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: rgba(232, 223, 216, 0.7);
+            text-transform: none;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid #c9a962;
+            color: #c9a962;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeIn 1s 0.8s ease forwards;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #c9a962;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: #0a1628;
+            border-color: #e3ca8a;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:focus {
+            outline: 3px solid #c9a962;
+            outline-offset: 4px;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(201, 169, 98, 0.6);
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeIn 1s 1.5s ease forwards;
+            z-index: 10;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, #c9a962, transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 4rem;
+            background: linear-gradient(to bottom, #faf7f2, #f5efe6);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #c9a962;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: #0a1628;
+            line-height: 1.2;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: #1a2840;
+            font-weight: 700;
+        }
+
+        /* Workbooks Section */
+        .workbooks {
+            padding: 8rem 4rem;
+            background: linear-gradient(to bottom, white, #fafafa);
+        }
+
+        .workbooks-carousel {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 2rem 0 4rem;
+        }
+
+        .workbooks-grid {
+            display: flex;
+            gap: 3.5rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 0 2rem 2rem;
+            scrollbar-width: thin;
+            scrollbar-color: #c9a962 #f5efe6;
+        }
+
+        .workbooks-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .workbooks-grid::-webkit-scrollbar-track {
+            background: #f5efe6;
+            border-radius: 10px;
+        }
+
+        .workbooks-grid::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #c9a962, #e3ca8a);
+            border-radius: 10px;
+        }
+
+        .workbooks-grid::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(90deg, #e3ca8a, #c9a962);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav:hover {
+            background: linear-gradient(135deg, #e3ca8a 0%, #c9a962 100%);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(201, 169, 98, 0.6);
+        }
+
+        .carousel-nav:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.5), 0 4px 15px rgba(201, 169, 98, 0.4);
+        }
+
+        .carousel-nav.prev {
+            left: 1rem;
+        }
+
+        .carousel-nav.next {
+            right: 1rem;
+        }
+
+        .carousel-nav svg {
+            width: 24px;
+            height: 24px;
+            fill: #0a1628;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(201, 169, 98, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .carousel-indicator:focus {
+            outline: none;
+            border-color: #c9a962;
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.2);
+        }
+
+        .carousel-indicator.active {
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .workbook-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
+            color: #0a1628;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 2px 8px rgba(201, 169, 98, 0.3);
+        }
+
+        .workbook-info h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0a1628;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .workbook-info p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* Simplified Card Styles */
+        .workbook-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            min-width: 280px;
+            flex-shrink: 0;
+        }
+
+        .workbook-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 70px rgba(10, 22, 40, 0.2);
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+
+        .workbook-card-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .workbook-card-info {
+            padding: 1.5rem;
+            text-align: center;
+            background: white;
+        }
+
+        .workbook-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0a1628;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* For Individuals Section */
+        .for-individuals {
+            padding: 8rem 4rem;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2840 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .for-individuals .section-tag {
+            color: #e3ca8a;
+        }
+
+        .for-individuals .section-title {
+            color: white;
+        }
+
+        .individuals-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .individuals-content p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* For Masajid Section */
+        .for-masajid {
+            padding: 8rem 4rem;
+            background: #f5efe6;
+        }
+
+        .masajid-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 3rem auto;
+        }
+
+        .masajid-feature {
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(201, 169, 98, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .masajid-feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(10, 22, 40, 0.12);
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.3);
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #0a1628;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .masajid-feature h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0a1628;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .masajid-feature p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 4rem;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2840 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .contact .section-tag {
+            color: #e3ca8a;
+        }
+
+        .contact .section-title {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-content > p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #e3ca8a;
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(201, 169, 98, 0.3);
+            border-radius: 6px;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #0a1628;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #c9a962;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
+            border: none;
+            border-radius: 6px;
+            color: #0a1628;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.3);
+            position: relative;
+        }
+
+        .form-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 169, 98, 0.5);
+        }
+
+        .form-submit:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-submit.loading::after {
+            content: "";
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border: 2px solid #0a1628;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .form-group input:invalid:not(:placeholder-shown),
+        .form-group textarea:invalid:not(:placeholder-shown) {
+            border-color: #ff4757;
+        }
+
+        .form-group input:valid:not(:placeholder-shown),
+        .form-group textarea:valid:not(:placeholder-shown) {
+            border-color: #2ed573;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(46, 213, 115, 0.2);
+            border: 1px solid rgba(46, 213, 115, 0.5);
+            color: #2ed573;
+        }
+
+        .form-message.error {
+            background: rgba(255, 71, 87, 0.2);
+            border: 1px solid rgba(255, 71, 87, 0.5);
+            color: #ff4757;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-secondary {
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #0a1628;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 4rem;
+            background: #0a1628;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c9a962;
+            margin-bottom: 1rem;
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-button svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* Icon list styles */
+        .icon-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .icon-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 3.5rem;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .icon-list-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(201, 169, 98, 0.25);
+        }
+
+        .icon-list-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: #0a1628;
+            fill: none;
+            stroke-width: 2.5;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(150%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scaleY(0.5);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes expandLine {
+            0% {
+                transform: scaleX(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+
+        /* Fade on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                height: 60px;
+            }
+
+            nav li {
+                font-size: 0.7rem;
+                padding: 0 1rem;
+                letter-spacing: 0.1em;
+                height: 58px;
+                line-height: 60px;
+            }
+
+            nav ul {
+                left: 0;
+                transform: none;
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            nav li.slide {
+                display: none;
+            }
+
+            .hero .title {
+                max-width: 90%;
+            }
+
+            .hero .title span.main {
+                letter-spacing: 0.1em;
+            }
+
+            .hero .title span.subtitle {
+                letter-spacing: 0.2em;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 0.75rem;
+            }
+
+            .deco-corner {
+                width: 60px;
+                height: 60px;
+            }
+
+            .about,
+            .workbooks,
+            .for-individuals,
+            .for-masajid,
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .workbooks-grid {
+                padding: 0 1rem 2rem;
+            }
+
+            .workbook-card {
+                min-width: 300px;
+            }
+
+            .masajid-features {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-button {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 50px;
+                height: 50px;
+            }
+
+            .whatsapp-button svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .icon-list li {
+                padding-left: 3rem;
+            }
+
+            .icon-list-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .icon-list-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    
+    <nav>
+        <ul>
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#workbooks">Workbooks</a></li>
+            <li><a href="#masajid">Masajid</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="slide"></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+    <section class="hero" id="home">
+        <div class="deco-line top"></div>
+        <div class="deco-line bottom"></div>
+        <div class="deco-corner top-left"></div>
+        <div class="deco-corner bottom-right"></div>
+        
+        <div class="title">
+            <span class="main">متون</span>
+            <span class="subtitle">Mutoon</span>
+            <span class="description">
+                Making Islamic Studies Accessible to Every Student of Knowledge
+            </span>
+            <button class="cta-button" 
+                    type="button"
+                    onclick="document.getElementById('workbooks').scrollIntoView({behavior: 'smooth'})">
+                Explore Collection
+            </button>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="section-header fade-in">
+            <p class="section-tag">Our Purpose</p>
+            <h2 class="section-title">Bridging Language & Knowledge</h2>
+        </div>
+        <div class="about-content fade-in">
+            <p>Islamic scholarship has been preserved in classical Arabic texts for centuries. For non-Arabic speakers, accessing this sacred knowledge can feel overwhelming—scattered PDFs, confusing notes, and no clear path forward.</p>
+            <p>Mutoon exists to change that. We create <span class="highlight">structured, interactive workbooks</span> that transform classical texts into accessible learning tools. Our workbooks don't just translate—they guide you through the material with spaces to write, reflect, and truly engage with the knowledge.</p>
+            <p>We believe that <span class="highlight">language should never be a barrier</span> between a student and their heritage. With Mutoon, you can organically study Islamic sciences at your own pace, building a personal library of knowledge that becomes part of your journey toward Allah.</p>
+            
+            <div style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid rgba(201, 169, 98, 0.2);">
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; color: #0a1628; margin-bottom: 1rem; text-align: center;">Authenticity & Credibility</h3>
+                <p>Our commitment to authenticity is absolute. We do not add anything from ourselves. Every piece of content in our workbooks is taken directly from <span class="highlight">official websites of the scholars</span> (shuyookh), only reformatted for your convenience. We serve as a bridge, not an interpreter—preserving the integrity of the original teachings while making them accessible to English-speaking students.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="workbooks" id="workbooks">
+        <div class="section-header fade-in">
+            <p class="section-tag">Our Collection</p>
+            <h2 class="section-title">Start Your Journey Today</h2>
+        </div>
+        
+        <!-- Workbooks Carousel -->
+        <div class="workbooks-carousel">
+            <button class="carousel-nav prev" 
+                    onclick="scrollCarousel(-1)" 
+                    aria-label="View previous workbooks"
+                    type="button">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <button class="carousel-nav next" 
+                    onclick="scrollCarousel(1)" 
+                    aria-label="View next workbooks"
+                    type="button">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+            <div class="workbooks-grid" id="workbooksCarousel">
+                <div class="workbook-card fade-in">
+                    <img src="GOF1.jpeg" 
+                         alt="Glorification of Knowledge workbook cover - Islamic study materials" 
+                         class="workbook-card-image"
+                         loading="lazy"
+                         width="280"
+                         height="400">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">Glorification of Knowledge</h3>
+                    </div>
+                </div>
+                <div class="workbook-card fade-in">
+                    <img src="3fp.png" 
+                         alt="The Three Principles workbook cover - Islamic fundamentals" 
+                         class="workbook-card-image"
+                         loading="lazy"
+                         width="280"
+                         height="400">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">The Three Principles</h3>
+                    </div>
+                </div>
+                <div class="workbook-card fade-in">
+                    <img src="GOF2.jpeg" 
+                         alt="The Four Principles workbook cover - Islamic education" 
+                         class="workbook-card-image"
+                         loading="lazy"
+                         width="280"
+                         height="400">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">The Four Principles</h3>
+                    </div>
+                </div>
+                <div class="workbook-card fade-in">
+                    <img src="GOF3.jpeg" 
+                         alt="Kitab At-Tawheed workbook cover - Islamic monotheism study guide" 
+                         class="workbook-card-image"
+                         loading="lazy"
+                         width="280"
+                         height="400">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">Kitab At-Tawheed</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-indicators" role="tablist" aria-label="Workbook carousel navigation">
+                <button class="carousel-indicator active" 
+                        onclick="goToSlide(0)" 
+                        type="button"
+                        role="tab"
+                        aria-label="Go to workbook 1"
+                        aria-selected="true"></button>
+                <button class="carousel-indicator" 
+                        onclick="goToSlide(1)" 
+                        type="button"
+                        role="tab"
+                        aria-label="Go to workbook 2"
+                        aria-selected="false"></button>
+                <button class="carousel-indicator" 
+                        onclick="goToSlide(2)" 
+                        type="button"
+                        role="tab"
+                        aria-label="Go to workbook 3"
+                        aria-selected="false"></button>
+                <button class="carousel-indicator" 
+                        onclick="goToSlide(3)" 
+                        type="button"
+                        role="tab"
+                        aria-label="Go to workbook 4"
+                        aria-selected="false"></button>
+            </div>
+        </div>
+
+        <!-- How Our Workbooks Work Section -->
+        <div style="max-width: 900px; margin: 5rem auto 0; padding: 3rem; background: #faf7f2; border-radius: 4px; border: 1px solid rgba(201, 169, 98, 0.2);">
+            <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: #0a1628; text-align: center; margin-bottom: 2rem;">How Our Workbooks Work</h3>
+            <div style="text-align: left; line-height: 1.8; color: #333;">
+                <p style="margin-bottom: 1.5rem; font-size: 1.05rem; font-weight: 500;">Each Mutoon workbook is meticulously designed to provide an immersive and effective learning experience:</p>
+                <ul class="icon-list">
+                    <li>
+                        <div class="icon-list-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 7h16M4 12h16M4 17h10"/>
+                            </svg>
+                        </div>
+                        <strong style="color: #1a2840; font-weight: 700;">Color-Coded Side-by-Side Format:</strong> Arabic matn alongside English translation, making it easy to follow and learn both languages simultaneously
+                    </li>
+                    <li>
+                        <div class="icon-list-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            </svg>
+                        </div>
+                        <strong style="color: #1a2840; font-weight: 700;">Structured Notebook Sections:</strong> The text is divided into clear sections with dedicated space to write notes under each subpoint
+                    </li>
+                    <li>
+                        <div class="icon-list-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <rect x="7" y="7" width="3" height="9"/>
+                                <rect x="14" y="7" width="3" height="5"/>
+                            </svg>
+                        </div>
+                        <strong style="color: #1a2840; font-weight: 700;">QR Codes to Relevant Lessons:</strong> Quick access to audio/video lessons from scholars to deepen your understanding
+                    </li>
+                    <li>
+                        <div class="icon-list-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                            </svg>
+                        </div>
+                        <strong style="color: #1a2840; font-weight: 700;">Table of Keywords:</strong> Essential vocabulary and terms for quick reference and memorization
+                    </li>
+                    <li style="margin-bottom: 0;">
+                        <div class="icon-list-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                        </div>
+                        <strong style="color: #1a2840; font-weight: 700;">Space for Personal Summaries:</strong> Create your own reflections and summaries to solidify your learning
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="for-individuals">
+        <div class="individuals-content fade-in">
+            <div class="section-header">
+                <p class="section-tag">For Individual Learners</p>
+                <h2 class="section-title">Order Your First Workbook</h2>
+            </div>
+            <p>Start building your personal library of Islamic knowledge today. Each workbook becomes a precious artifact of your learning journey—your notes, your reflections, your growth.</p>
+            <button class="cta-button" 
+                    type="button"
+                    onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                Order Now
+            </button>
+        </div>
+    </section>
+
+    <section class="for-masajid" id="masajid">
+        <div class="section-header fade-in">
+            <p class="section-tag">For Masajid & Institutes</p>
+            <h2 class="section-title">Partner With Us for Your Next Event</h2>
+        </div>
+        <div class="masajid-features">
+            <div class="masajid-feature fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4>Conferences</h4>
+                <p>Provide attendees with workbooks they can use during and after your event</p>
+            </div>
+            <div class="masajid-feature fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <h4>Study Circles</h4>
+                <p>Structured workbooks perfect for halaqaat and group learning programmes</p>
+            </div>
+            <div class="masajid-feature fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <h4>Weekend Schools</h4>
+                <p>Consistent curriculum materials for your educational programmes</p>
+            </div>
+        </div>
+
+        <!-- Bulk Order Section -->
+        <div style="max-width: 900px; margin: 4rem auto 0; padding: 4rem 3rem; background: linear-gradient(135deg, white 0%, #fafafa 100%); border-radius: 12px; text-align: center; box-shadow: 0 15px 50px rgba(10, 22, 40, 0.1); border: 2px solid rgba(201, 169, 98, 0.2);">
+            <div class="feature-icon" style="margin: 0 auto 2rem; background: linear-gradient(135deg, #0a1628 0%, #1a2840 100%);">
+                <svg viewBox="0 0 24 24" style="stroke: #e3ca8a;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #c9a962; margin-bottom: 1rem;">Special Pricing Available</p>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 700; color: #0a1628; margin-bottom: 1.5rem; line-height: 1.3;">Equip Your Entire Community</h3>
+            <p style="font-size: 1.1rem; font-weight: 500; color: #555; line-height: 1.9; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Empower your students and community members with the tools they need to deeply engage with Islamic scholarship. Our bulk ordering program makes it easy and affordable to provide high-quality workbooks for:</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 600px; margin: 0 auto 2.5rem; text-align: left;">
+                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962; display: flex; align-items: start; gap: 1rem;">
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #0a1628; fill: none; stroke-width: 2;">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p style="font-family: 'Cinzel', serif; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">Study Programs</p>
+                        <p style="font-size: 0.9rem; font-weight: 500; color: #666; line-height: 1.6; margin: 0;">Long-term classes & courses</p>
+                    </div>
+                </div>
+                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962; display: flex; align-items: start; gap: 1rem;">
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #0a1628; fill: none; stroke-width: 2;">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p style="font-family: 'Cinzel', serif; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">Conferences</p>
+                        <p style="font-size: 0.9rem; font-weight: 500; color: #666; line-height: 1.6; margin: 0;">One-time events & seminars</p>
+                    </div>
+                </div>
+                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962; display: flex; align-items: start; gap: 1rem;">
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #0a1628; fill: none; stroke-width: 2;">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p style="font-family: 'Cinzel', serif; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">Halaqaat</p>
+                        <p style="font-size: 0.9rem; font-weight: 500; color: #666; line-height: 1.6; margin: 0;">Regular study circles</p>
+                    </div>
+                </div>
+                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962; display: flex; align-items: start; gap: 1rem;">
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #0a1628; fill: none; stroke-width: 2;">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p style="font-family: 'Cinzel', serif; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">Weekend Schools</p>
+                        <p style="font-size: 0.9rem; font-weight: 500; color: #666; line-height: 1.6; margin: 0;">Youth education programs</p>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: 1.05rem; color: #333; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 500;">We offer flexible quantities and competitive pricing to fit your budget. Contact us today to discuss your needs and receive a personalized quote.</p>
+            <button class="cta-button" 
+                    type="button"
+                    style="background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); color: #0a1628; border: none; box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);" 
+                    onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                Get Your Custom Quote
+            </button>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="section-header fade-in">
+            <p class="section-tag">Get in Touch</p>
+            <h2 class="section-title">Ready to Begin?</h2>
+        </div>
+        <div class="contact-content fade-in">
+            <p>Whether you're an individual learner or representing a masjid or institute, we're here to help you access authentic Islamic knowledge.</p>
+            
+            <!-- Contact Form -->
+            <form class="contact-form" id="contactForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" 
+                           id="name" 
+                           name="name" 
+                           required 
+                           minlength="2" 
+                           maxlength="100"
+                           aria-required="true"
+                           autocomplete="name"
+                           placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           required
+                           aria-required="true"
+                           autocomplete="email"
+                           placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" 
+                              name="message" 
+                              required 
+                              minlength="10" 
+                              maxlength="1000"
+                              aria-required="true"
+                              placeholder="Tell us how we can help you..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message</button>
+                <div class="form-message" id="formMessage" role="alert" aria-live="polite"></div>
+            </form>
+
+            <div class="contact-buttons">
+                <a href="mailto:contact@mutoon.co.uk" class="btn-secondary">Email Directly</a>
+                <a href="#" class="btn-secondary">Request Samples</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">متون</div>
+        <div class="footer-content">
+            <p>Making Islamic studies accessible to non-Arabic speakers through structured, interactive workbooks. Building bridges between students and sacred knowledge.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Mutoon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/447552908868?text=Hi%20Mutoon,%20I'd%20like%20to%20learn%20more%20about%20your%20workbooks" 
+       class="whatsapp-button" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       aria-label="Contact us on WhatsApp - opens in new window">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.738 5.484 2.026 7.773L0 32l8.448-2.016A15.923 15.923 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.672 0-5.203-.795-7.322-2.164l-.526-.313-5.458 1.302 1.302-5.458-.313-.526A13.287 13.287 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333z"/>
+            <path d="M23.023 19.375c-.38-.19-2.25-1.11-2.597-1.237-.348-.126-.6-.19-.853.19-.253.38-.98 1.237-1.202 1.49-.221.253-.443.285-.823.095-.38-.19-1.603-.59-3.052-1.883-1.128-.995-1.89-2.224-2.111-2.604-.221-.38-.024-.585.166-.774.17-.17.38-.443.57-.665.19-.221.253-.38.38-.633.126-.253.063-.475-.032-.665-.095-.19-.853-2.055-1.169-2.815-.308-.74-.62-.64-.853-.652-.221-.012-.475-.015-.728-.015s-.665.095-.948.475c-.285.38-1.075 1.05-1.075 2.56s1.1 2.97 1.253 3.176c.152.207 2.163 3.303 5.24 4.632.732.316 1.303.505 1.748.647.735.234 1.404.2 1.933.122.59-.088 1.817-.743 2.072-1.46.254-.718.254-1.333.177-1.46-.076-.127-.329-.207-.709-.397z"/>
+        </svg>
+    </a>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Mutoon",
+        "alternateName": "متون",
+        "url": "https://www.mutoon.co.uk",
+        "logo": "https://www.mutoon.co.uk/logo.png",
+        "description": "Mutoon creates structured, interactive Islamic study workbooks that make classical Arabic texts accessible to English-speaking students.",
+        "email": "contact@mutoon.co.uk",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+44-755-290-8868",
+            "contactType": "Customer Service",
+            "availableLanguage": ["English", "Arabic"]
+        },
+        "sameAs": [
+            "https://wa.me/447552908868"
+        ],
+        "areaServed": "GB",
+        "slogan": "Making Islamic Studies Accessible to Every Student of Knowledge"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "@id": "https://www.mutoon.co.uk#workbooks",
+        "name": "Islamic Study Workbooks",
+        "description": "Structured, interactive workbooks that transform classical Islamic texts into accessible learning tools with side-by-side Arabic and English translation.",
+        "brand": {
+            "@type": "Brand",
+            "name": "Mutoon"
+        },
+        "category": "Education",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "GBP"
+            }
+        }
+    }
+    </script>
+
+    <script>
+        // Add active state to nav items on click
+        const navItems = document.querySelectorAll('nav li:not(.slide)');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        // Smooth parallax effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const decorations = document.querySelectorAll('.deco-corner, .deco-line');
+            decorations.forEach((deco, index) => {
+                const speed = (index + 1) * 5;
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                deco.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Fade in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Carousel functionality
+        const carousel = document.getElementById('workbooksCarousel');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        let currentSlide = 0;
+        let autoScrollInterval;
+
+        function scrollCarousel(direction) {
+            const cardWidth = carousel.querySelector('.workbook-card').offsetWidth;
+            const gap = 56; // 3.5rem gap
+            const scrollAmount = (cardWidth + gap) * direction;
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            
+            // Update current slide
+            currentSlide = Math.max(0, Math.min(3, currentSlide + direction));
+            updateIndicators();
+            resetAutoScroll();
+        }
+
+        function goToSlide(index) {
+            const cardWidth = carousel.querySelector('.workbook-card').offsetWidth;
+            const gap = 56;
+            carousel.scrollTo({ left: (cardWidth + gap) * index, behavior: 'smooth' });
+            currentSlide = index;
+            updateIndicators();
+            resetAutoScroll();
+        }
+
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                    indicator.setAttribute('aria-selected', 'true');
+                } else {
+                    indicator.classList.remove('active');
+                    indicator.setAttribute('aria-selected', 'false');
+                }
+            });
+        }
+
+        function autoScroll() {
+            currentSlide = (currentSlide + 1) % 4;
+            goToSlide(currentSlide);
+        }
+
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(autoScroll, 5000);
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
+
+        // Start auto-scrolling
+        startAutoScroll();
+
+        // Pause auto-scroll on hover
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            startAutoScroll();
+        });
+
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitButton = contactForm.querySelector('.form-submit');
+
+        // Input sanitization function
+        function sanitizeInput(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Email validation (RFC 5322 compliant)
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Name validation
+        function isValidName(name) {
+            return /^[a-zA-Z\s'-]{2,100}$/.test(name);
+        }
+
+        // Real-time validation
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+
+        nameInput.addEventListener('blur', function() {
+            if (this.value && !isValidName(this.value)) {
+                this.setCustomValidity('Please enter a valid name (letters, spaces, hyphens only)');
+                this.reportValidity();
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+
+        emailInput.addEventListener('blur', function() {
+            if (this.value && !isValidEmail(this.value)) {
+                this.setCustomValidity('Please enter a valid email address');
+                this.reportValidity();
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+
+        messageInput.addEventListener('input', function() {
+            const remaining = 1000 - this.value.length;
+            if (remaining < 0) {
+                this.value = this.value.substring(0, 1000);
+            }
+        });
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Disable submit button and add loading state
+            submitButton.disabled = true;
+            submitButton.classList.add('loading');
+            
+            // Get and sanitize form values
+            const name = sanitizeInput(nameInput.value.trim());
+            const email = sanitizeInput(emailInput.value.trim());
+            const message = sanitizeInput(messageInput.value.trim());
+            
+            // Validate inputs
+            if (name.length < 2 || name.length > 100 || !isValidName(name)) {
+                showMessage('Please enter a valid name (2-100 characters, letters only).', 'error');
+                submitButton.disabled = false;
+                submitButton.classList.remove('loading');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showMessage('Please enter a valid email address.', 'error');
+                submitButton.disabled = false;
+                submitButton.classList.remove('loading');
+                return;
+            }
+            
+            if (message.length < 10 || message.length > 1000) {
+                showMessage('Please enter a message (10-1000 characters).', 'error');
+                submitButton.disabled = false;
+                submitButton.classList.remove('loading');
+                return;
+            }
+            
+            // Create mailto link
+            const subject = encodeURIComponent('Contact Form - Mutoon Website');
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            const mailtoLink = `mailto:contact@mutoon.co.uk?subject=${subject}&body=${body}`;
+            
+            // Small delay to show loading state
+            setTimeout(() => {
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show success message
+                showMessage('Opening your email client... If nothing happens, please email us directly at contact@mutoon.co.uk', 'success');
+                
+                // Reset form after a delay
+                setTimeout(() => {
+                    contactForm.reset();
+                    hideMessage();
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('loading');
+                }, 3000);
+            }, 500);
+        });
+
+        function showMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+            formMessage.setAttribute('role', 'alert');
+        }
+
+        function hideMessage() {
+            formMessage.style.display = 'none';
+            formMessage.removeAttribute('role');
+        }
+    </script>
+</body>
+</html>
