@@ -114,6 +114,7 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            zoom: 0.9;
         }
 
         ::selection {
@@ -143,129 +144,106 @@
         /* Navigation */
         nav {
             width: 100%;
-            background-color: #0a1628;
+            background: linear-gradient(180deg, rgba(10, 22, 40, 0.95) 0%, rgba(10, 22, 40, 0.92) 100%);
+            backdrop-filter: blur(15px);
             position: fixed;
             top: 0;
-            height: 80px;
-            overflow: hidden;
+            height: 75px;
             z-index: 1000;
-            border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+            border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
         }
 
         nav ul {
             position: absolute;
             top: 0;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) scale(0.95);
             list-style-type: none;
             padding: 0;
             margin: 0;
             display: flex;
             height: 100%;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         nav li {
             margin: 0;
-            display: inline-block;
-            height: 78px;
-            margin-bottom: 2px;
-            line-height: 80px;
-            padding: 0 2.5rem;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 2rem;
             text-align: center;
-            color: rgba(201, 169, 98, 0.6);
-            transition: all 0.4s ease;
+            color: rgba(201, 169, 98, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             font-weight: 600;
             font-family: 'Cinzel', serif;
-            transform: translateY(-100%);
             position: relative;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        nav li::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #c9a962, transparent);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
         }
 
         nav li.active {
             color: #c9a962;
         }
 
-        nav li.active::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #c9a962, transparent);
+        nav li.active::before {
+            transform: translateX(-50%) scaleX(1);
         }
 
         nav li:nth-child(1) {
-            animation: slideDown 0.6s 0.1s ease forwards;
+            animation: fadeInDown 0.5s 0.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         nav li:nth-child(2) {
-            animation: slideDown 0.6s 0.2s ease forwards;
+            animation: fadeInDown 0.5s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         nav li:nth-child(3) {
-            animation: slideDown 0.6s 0.3s ease forwards;
+            animation: fadeInDown 0.5s 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         nav li:nth-child(4) {
-            animation: slideDown 0.6s 0.4s ease forwards;
+            animation: fadeInDown 0.5s 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         nav li:nth-child(5) {
-            animation: slideDown 0.6s 0.5s ease forwards;
+            animation: fadeInDown 0.5s 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         nav li:hover {
             color: #e3ca8a;
-            background-color: rgba(201, 169, 98, 0.05);
+            transform: translateY(-2px);
+        }
+
+        nav li:hover::before {
+            transform: translateX(-50%) scaleX(1);
         }
 
         nav li:active {
-            background-color: rgba(201, 169, 98, 0.1);
-        }
-
-        nav li:hover ~ .slide {
-            opacity: 1;
-        }
-
-        nav li:nth-child(1):hover ~ .slide {
-            left: calc(50% - 250px);
-        }
-
-        nav li:nth-child(2):hover ~ .slide {
-            left: calc(50% - 80px);
-        }
-
-        nav li:nth-child(3):hover ~ .slide {
-            left: 50%;
-        }
-
-        nav li:nth-child(4):hover ~ .slide {
-            left: calc(50% + 90px);
-        }
-
-        nav li:nth-child(5):hover ~ .slide {
-            left: calc(50% + 250px);
+            transform: translateY(0);
         }
 
         nav li.slide {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.3), transparent);
-            z-index: -1;
-            height: 100%;
-            width: 150px;
-            padding: 0;
-            margin: 0;
-            transition: left 0.4s ease, opacity 0.3s ease;
-            transform: translateY(0);
-            opacity: 0;
-            pointer-events: none;
+            display: none;
         }
 
         /* Hero Section */
@@ -477,7 +455,7 @@
 
         /* About Section */
         .about {
-            padding: 8rem 4rem;
+            padding: 10rem 4rem;
             background: linear-gradient(to bottom, #faf7f2, #f5efe6);
             position: relative;
             overflow: hidden;
@@ -530,7 +508,7 @@
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.35rem;
             line-height: 1.8;
             color: #333;
             font-weight: 500;
@@ -695,8 +673,11 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.05),
+                0 8px 16px rgba(0, 0, 0, 0.08),
+                0 16px 32px rgba(0, 0, 0, 0.06);
             border: 1px solid rgba(201, 169, 98, 0.15);
             min-width: 280px;
             flex-shrink: 0;
@@ -704,8 +685,11 @@
 
         .workbook-card:hover {
             transform: translateY(-12px);
-            box-shadow: 0 25px 70px rgba(10, 22, 40, 0.2);
-            border-color: rgba(201, 169, 98, 0.3);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.08),
+                0 20px 40px rgba(10, 22, 40, 0.15),
+                0 40px 80px rgba(10, 22, 40, 0.12);
+            border-color: rgba(201, 169, 98, 0.4);
         }
 
         .workbook-card-image {
@@ -713,6 +697,11 @@
             height: 400px;
             object-fit: cover;
             display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .workbook-card:hover .workbook-card-image {
+            transform: scale(1.08);
         }
 
         .workbook-card-info {
@@ -730,12 +719,30 @@
             line-height: 1.4;
         }
 
-        /* For Individuals Section */
+        /* For Individuals Section - Compact with liquid glass effect */
         .for-individuals {
-            padding: 8rem 4rem;
+            padding: 5rem 4rem;
             background: linear-gradient(135deg, #0a1628 0%, #1a2840 100%);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .for-individuals::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(201, 169, 98, 0.08) 0%, transparent 60%);
+            z-index: 0;
+        }
+
+        .for-individuals > * {
+            position: relative;
+            z-index: 1;
         }
 
         .for-individuals .section-tag {
@@ -747,21 +754,26 @@
         }
 
         .individuals-content {
-            max-width: 700px;
+            max-width: 650px;
             margin: 0 auto;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .individuals-content p {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
+            margin-bottom: 2rem;
+            line-height: 1.7;
         }
 
-        /* For Masajid Section */
+        /* For Masajid Section - Compact with liquid glass effect */
         .for-masajid {
-            padding: 8rem 4rem;
+            padding: 5rem 4rem;
             background: linear-gradient(135deg, #0a1628 0%, #1a2840 100%);
             position: relative;
             overflow: hidden;
@@ -1140,6 +1152,27 @@
             fill: white;
         }
 
+        /* Fixed Logo at Bottom Left */
+        .fixed-logo {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-logo img {
+            max-width: 80px;
+            height: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+            transition: all 0.3s ease;
+        }
+
+        .fixed-logo:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 4px 12px rgba(201, 169, 98, 0.4));
+        }
+
         /* Icon list styles */
         .icon-list {
             list-style: none;
@@ -1178,6 +1211,17 @@
         }
 
         /* Animations */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @keyframes slideDown {
             0% {
                 transform: translateY(-100%);
@@ -1447,6 +1491,15 @@
                          height="400">
                     <div class="workbook-card-info">
                         <h3 class="workbook-card-title">Glorification of Knowledge</h3>
+                        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #666; font-family: 'Amiri', serif; font-style: italic;">تعظيم قدر الصلاة</p>
+                        <p style="margin: 0.3rem 0 0.8rem; font-size: 0.85rem; color: #888; font-weight: 600;">By Shaykh Salih Al-Usaymi</p>
+                        <a href="#contact" 
+                           style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); color: #0a1628; font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 4px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(201, 169, 98, 0.3);"
+                           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(201, 169, 98, 0.5)';"
+                           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(201, 169, 98, 0.3)';"
+                           onclick="event.preventDefault(); document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">
+                            Order Now
+                        </a>
                     </div>
                 </div>
                 <div class="workbook-card fade-in">
@@ -1457,7 +1510,10 @@
                          width="280"
                          height="400">
                     <div class="workbook-card-info">
-                        <h3 class="workbook-card-title">The Three Principles</h3>
+                        <h3 class="workbook-card-title">The Three Fundamental Principles</h3>
+                        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #666; font-family: 'Amiri', serif; font-style: italic;">ثلاثة الأصول</p>
+                        <p style="margin: 0.3rem 0 0.8rem; font-size: 0.85rem; color: #888; font-weight: 600;">By Imam Muhammad ibn Abdul Wahhab</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #c9a962; font-weight: 700; font-family: 'Cinzel', serif; letter-spacing: 0.1em;">COMING SOON</p>
                     </div>
                 </div>
                 <div class="workbook-card fade-in">
@@ -1468,9 +1524,29 @@
                          width="280"
                          height="400">
                     <div class="workbook-card-info">
-                        <h3 class="workbook-card-title">The Four Principles</h3>
+                        <h3 class="workbook-card-title">The Four Fundamental Principles</h3>
+                        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #666; font-family: 'Amiri', serif; font-style: italic;">أربع قواعد</p>
+                        <p style="margin: 0.3rem 0 0.8rem; font-size: 0.85rem; color: #888; font-weight: 600;">By Imam Muhammad ibn Abdul Wahhab</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #c9a962; font-weight: 700; font-family: 'Cinzel', serif; letter-spacing: 0.1em;">COMING SOON</p>
+                    </div>
+
+                </div>
+
+                         <div class="workbook-card fade-in">
+                    <img src="GOF3.jpeg" 
+                         alt="The Six Fundamental Principles workbook cover" 
+                         class="workbook-card-image"
+                         loading="lazy"
+                         width="280"
+                         height="400">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">The Six Fundamental Principles</h3>
+                        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #666; font-family: 'Amiri', serif; font-style: italic;">ستة أصول</p>
+                        <p style="margin: 0.3rem 0 0.8rem; font-size: 0.85rem; color: #888; font-weight: 600;">By Imam Muhammad ibn Abdul Wahhab</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #c9a962; font-weight: 700; font-family: 'Cinzel', serif; letter-spacing: 0.1em;">COMING SOON</p>
                     </div>
                 </div>
+
                 <div class="workbook-card fade-in">
                     <img src="GOF3.jpeg" 
                          alt="Kitab At-Tawheed workbook cover - Islamic monotheism study guide" 
@@ -1480,6 +1556,37 @@
                          height="400">
                     <div class="workbook-card-info">
                         <h3 class="workbook-card-title">Kitab At-Tawheed</h3>
+                        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #666; font-family: 'Amiri', serif; font-style: italic;">كتاب التوحيد</p>
+                        <p style="margin: 0.3rem 0 0.8rem; font-size: 0.85rem; color: #888; font-weight: 600;">By Imam Muhammad ibn Abdul Wahhab</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #c9a962; font-weight: 700; font-family: 'Cinzel', serif; letter-spacing: 0.1em;">COMING SOON</p>
+                    </div>
+                </div>
+                <div class="workbook-card fade-in">
+                    <img src="GOF1.jpeg" 
+                         alt="The Virtues of the Quran workbook cover" 
+                         class="workbook-card-image"
+                         loading="lazy"
+                         width="280"
+                         height="400">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">The Virtues of the Quran</h3>
+                        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #666; font-family: 'Amiri', serif; font-style: italic;">فضائل القرآن</p>
+                        <p style="margin: 0.3rem 0 0.8rem; font-size: 0.85rem; color: #888; font-weight: 600;">By Imam Ibn Kathir</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #c9a962; font-weight: 700; font-family: 'Cinzel', serif; letter-spacing: 0.1em;">COMING SOON</p>
+                    </div>
+                </div>
+                <div class="workbook-card fade-in">
+                    <img src="GOF2.jpeg" 
+                         alt="Nullifiers of Islam workbook cover" 
+                         class="workbook-card-image"
+                         loading="lazy"
+                         width="280"
+                         height="400">
+                    <div class="workbook-card-info">
+                        <h3 class="workbook-card-title">Nullifiers of Islam</h3>
+                        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #666; font-family: 'Amiri', serif; font-style: italic;">نواقض الإسلام</p>
+                        <p style="margin: 0.3rem 0 0.8rem; font-size: 0.85rem; color: #888; font-weight: 600;">By Imam Muhammad ibn Abdul Wahhab</p>
+                        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #c9a962; font-weight: 700; font-family: 'Cinzel', serif; letter-spacing: 0.1em;">COMING SOON</p>
                     </div>
                 </div>
             </div>
@@ -1507,6 +1614,24 @@
                         type="button"
                         role="tab"
                         aria-label="Go to workbook 4"
+                        aria-selected="false"></button>
+                <button class="carousel-indicator" 
+                        onclick="goToSlide(4)" 
+                        type="button"
+                        role="tab"
+                        aria-label="Go to workbook 5"
+                        aria-selected="false"></button>
+                <button class="carousel-indicator" 
+                        onclick="goToSlide(5)" 
+                        type="button"
+                        role="tab"
+                        aria-label="Go to workbook 6"
+                        aria-selected="false"></button>
+                <button class="carousel-indicator" 
+                        onclick="goToSlide(6)" 
+                        type="button"
+                        role="tab"
+                        aria-label="Go to workbook 7"
                         aria-selected="false"></button>
             </div>
         </div>
@@ -1569,50 +1694,46 @@
         </div>
     </section>
 
-    <section class="for-individuals">
-        <div class="individuals-content fade-in">
-            <div class="section-header">
-                <p class="section-tag">For Individual Learners</p>
-                <h2 class="section-title">Order Your First Workbook</h2>
-            </div>
-            <p>Start building your personal library of Islamic knowledge today. Each workbook becomes a precious artifact of your learning journey—your notes, your reflections, your growth.</p>
-            <button class="cta-button" 
-                    type="button"
-                    onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-                Order Now
-            </button>
-        </div>
-    </section>
-
     <section class="for-masajid" id="masajid">
         <div class="section-header fade-in">
-           
+            <p class="section-tag" style="color: #e3ca8a;">For Masajid & Institutes</p>
+            <h2 class="section-title" style="color: white;">Bulk Ordering Program</h2>
         </div>
 
-        <!-- Bulk Order Section -->
-        <div style="max-width: 900px; margin: 4rem auto 0; padding: 4rem 3rem; background: linear-gradient(135deg, white 0%, #fafafa 100%); border-radius: 12px; text-align: center; box-shadow: 0 15px 50px rgba(10, 22, 40, 0.1); border: 2px solid rgba(201, 169, 98, 0.2);">
-            <div class="feature-icon" style="margin: 0 auto 2rem; background: linear-gradient(135deg, #0a1628 0%, #1a2840 100%);">
-                <svg viewBox="0 0 24 24" style="stroke: #e3ca8a;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <!-- Introduction -->
+            <div style="text-align: center; margin-bottom: 5rem;">
+                <p style="font-size: 1.15rem; font-weight: 500; color: rgba(255, 255, 255, 0.9); line-height: 1.9; max-width: 800px; margin: 0 auto 2.5rem;">
+                    Empower your students and community members with the tools they need to deeply engage with Islamic scholarship. Our bulk ordering program makes it easy and affordable to provide high-quality workbooks for your programs.
+                </p>
+                <div style="display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 2.5rem; background: rgba(227, 202, 138, 0.1); border-radius: 50px; border: 2px solid rgba(227, 202, 138, 0.4); backdrop-filter: blur(10px);">
+                    <div style="width: 12px; height: 12px; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; box-shadow: 0 0 15px rgba(227, 202, 138, 0.6);"></div>
+                    <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #e3ca8a; margin: 0;">
+                        Special Pricing Available
+                    </p>
+                </div>
             </div>
-            <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #c9a962; margin-bottom: 1rem;">Special Pricing Available</p>
-            <h3 style="font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 700; color: #0a1628; margin-bottom: 1.5rem; line-height: 1.3;">Equip Your Entire Community</h3>
-            <p style="font-size: 1.1rem; font-weight: 500; color: #555; line-height: 1.9; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Empower your students and community members with the tools they need to deeply engage with Islamic scholarship. Our bulk ordering program makes it easy and affordable to provide high-quality workbooks for:</p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 600px; margin: 0 auto 2.5rem; text-align: left;">
-                <div style="padding: 1.5rem; background: rgba(255, 255, 255, 0.442); border-radius: 8px; border-left: 3px solid #c9a962; display: flex; align-items: start; gap: 1rem;">
-                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #0a1628; fill: none; stroke-width: 2;">
+
+            <!-- Features List -->
+            <div class="fade-in" style="margin-bottom: 4rem;">
+                <!-- Feature Item -->
+                <div style="display: flex; align-items: start; gap: 2rem; padding: 2.5rem; margin-bottom: 2rem; background: rgba(255, 255, 255, 0.03); border-left: 3px solid #c9a962; border-radius: 0 8px 8px 0; transition: all 0.4s ease; backdrop-filter: blur(5px);" onmouseover="this.style.background='rgba(255, 255, 255, 0.06)'; this.style.borderLeftColor='#e3ca8a'; this.style.transform='translateX(8px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.03)'; this.style.borderLeftColor='#c9a962'; this.style.transform='translateX(0)';">
+                    <div style="flex-shrink: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(201, 169, 98, 0.2) 0%, rgba(227, 202, 138, 0.2) 100%); border: 2px solid rgba(201, 169, 98, 0.5); border-radius: 12px;">
+                        <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; stroke: #e3ca8a; fill: none; stroke-width: 2;">
                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                         </svg>
                     </div>
                     <div>
-                        <p style="font-family: 'Cinzel', serif; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">Study Programs</p>
-                        <p style="font-size: 0.9rem; font-weight: 500; color: #666; line-height: 1.6; margin: 0;">Long-term classes & courses</p>
+                        <h4 style="font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; color: #e3ca8a; margin-bottom: 0.8rem;">Study Programs</h4>
+                        <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.8); line-height: 1.7; margin: 0;">Equip your long-term classes and courses with comprehensive workbooks that guide students through structured learning journeys.</p>
                     </div>
                 </div>
-                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962; display: flex; align-items: start; gap: 1rem;">
-                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #0a1628; fill: none; stroke-width: 2;">
+
+                <!-- Feature Item -->
+                <div style="display: flex; align-items: start; gap: 2rem; padding: 2.5rem; margin-bottom: 2rem; background: rgba(255, 255, 255, 0.03); border-left: 3px solid #c9a962; border-radius: 0 8px 8px 0; transition: all 0.4s ease; backdrop-filter: blur(5px);" onmouseover="this.style.background='rgba(255, 255, 255, 0.06)'; this.style.borderLeftColor='#e3ca8a'; this.style.transform='translateX(8px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.03)'; this.style.borderLeftColor='#c9a962'; this.style.transform='translateX(0)';">
+                    <div style="flex-shrink: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(201, 169, 98, 0.2) 0%, rgba(227, 202, 138, 0.2) 100%); border: 2px solid rgba(201, 169, 98, 0.5); border-radius: 12px;">
+                        <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; stroke: #e3ca8a; fill: none; stroke-width: 2;">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -1620,13 +1741,15 @@
                         </svg>
                     </div>
                     <div>
-                        <p style="font-family: 'Cinzel', serif; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">Conferences</p>
-                        <p style="font-size: 0.9rem; font-weight: 500; color: #666; line-height: 1.6; margin: 0;">One-time events & seminars</p>
+                        <h4 style="font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; color: #e3ca8a; margin-bottom: 0.8rem;">Conferences & Seminars</h4>
+                        <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.8); line-height: 1.7; margin: 0;">Provide attendees at your one-time events with valuable take-home materials that enhance their learning experience.</p>
                     </div>
                 </div>
-                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962; display: flex; align-items: start; gap: 1rem;">
-                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #0a1628; fill: none; stroke-width: 2;">
+
+                <!-- Feature Item -->
+                <div style="display: flex; align-items: start; gap: 2rem; padding: 2.5rem; margin-bottom: 2rem; background: rgba(255, 255, 255, 0.03); border-left: 3px solid #c9a962; border-radius: 0 8px 8px 0; transition: all 0.4s ease; backdrop-filter: blur(5px);" onmouseover="this.style.background='rgba(255, 255, 255, 0.06)'; this.style.borderLeftColor='#e3ca8a'; this.style.transform='translateX(8px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.03)'; this.style.borderLeftColor='#c9a962'; this.style.transform='translateX(0)';">
+                    <div style="flex-shrink: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(201, 169, 98, 0.2) 0%, rgba(227, 202, 138, 0.2) 100%); border: 2px solid rgba(201, 169, 98, 0.5); border-radius: 12px;">
+                        <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; stroke: #e3ca8a; fill: none; stroke-width: 2;">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
                             <line x1="9" y1="9" x2="9.01" y2="9"/>
@@ -1634,30 +1757,61 @@
                         </svg>
                     </div>
                     <div>
-                        <p style="font-family: 'Cinzel', serif; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">Halaqaat</p>
-                        <p style="font-size: 0.9rem; font-weight: 500; color: #666; line-height: 1.6; margin: 0;">Regular study circles</p>
+                        <h4 style="font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; color: #e3ca8a; margin-bottom: 0.8rem;">Halaqaat & Study Circles</h4>
+                        <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.8); line-height: 1.7; margin: 0;">Support your regular study circles with interactive workbooks that facilitate note-taking and deeper engagement.</p>
                     </div>
                 </div>
-                <div style="padding: 1.5rem; background: white; border-radius: 8px; border-left: 3px solid #c9a962; display: flex; align-items: start; gap: 1rem;">
-                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #0a1628; fill: none; stroke-width: 2;">
+
+                <!-- Feature Item -->
+                <div style="display: flex; align-items: start; gap: 2rem; padding: 2.5rem; margin-bottom: 0; background: rgba(255, 255, 255, 0.03); border-left: 3px solid #c9a962; border-radius: 0 8px 8px 0; transition: all 0.4s ease; backdrop-filter: blur(5px);" onmouseover="this.style.background='rgba(255, 255, 255, 0.06)'; this.style.borderLeftColor='#e3ca8a'; this.style.transform='translateX(8px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.03)'; this.style.borderLeftColor='#c9a962'; this.style.transform='translateX(0)';">
+                    <div style="flex-shrink: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(201, 169, 98, 0.2) 0%, rgba(227, 202, 138, 0.2) 100%); border: 2px solid rgba(201, 169, 98, 0.5); border-radius: 12px;">
+                        <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; stroke: #e3ca8a; fill: none; stroke-width: 2;">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                             <polyline points="9 22 9 12 15 12 15 22"/>
                         </svg>
                     </div>
                     <div>
-                        <p style="font-family: 'Cinzel', serif; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; font-size: 1rem;">Weekend Schools</p>
-                        <p style="font-size: 0.9rem; font-weight: 500; color: #666; line-height: 1.6; margin: 0;">Youth education programs</p>
+                        <h4 style="font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; color: #e3ca8a; margin-bottom: 0.8rem;">Weekend Schools & Youth Programs</h4>
+                        <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.8); line-height: 1.7; margin: 0;">Give your youth education programs structured materials that make Islamic studies accessible and engaging.</p>
                     </div>
                 </div>
             </div>
-            <p style="font-size: 1.05rem; color: #333; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 500;">We offer flexible quantities and competitive pricing to fit your budget. Contact us today to discuss your needs and receive a personalized quote.</p>
-            <button class="cta-button" 
-                    type="button"
-                    style="background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); color: #0a1628; border: none; box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);" 
-                    onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-                Get Your Custom Quote
-            </button>
+
+            <!-- Benefits Banner -->
+            <div style="padding: 3rem; background: linear-gradient(135deg, rgba(201, 169, 98, 0.15) 0%, rgba(227, 202, 138, 0.1) 100%); border-radius: 12px; border: 1px solid rgba(201, 169, 98, 0.3); margin-bottom: 4rem; backdrop-filter: blur(10px);">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem;">
+                    <div style="text-align: center;">
+                        <div style="width: 50px; height: 50px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);">
+                            <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; stroke: #0a1628; fill: none; stroke-width: 2.5;">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </div>
+                        <h5 style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: #e3ca8a; margin-bottom: 0.5rem;">Flexible Quantities</h5>
+                        <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin: 0;">From small groups to large communities</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 50px; height: 50px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); border-radius: 50%; box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);">
+                            <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; stroke: #0a1628; fill: none; stroke-width: 2.5;">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <h5 style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: #e3ca8a; margin-bottom: 0.5rem;">Competitive Pricing</h5>
+                        <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin: 0;">Budget-friendly options for every organization</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center;">
+                <p style="font-size: 1.1rem; font-weight: 500; color: rgba(255, 255, 255, 0.85); line-height: 1.8; margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Contact us today to discuss your needs and receive a personalized quote tailored to your community's requirements.
+                </p>
+                <button class="cta-button" 
+                        type="button"
+                        onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                    Get Your Custom Quote
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1711,9 +1865,15 @@
     </main>
 
     <footer>
+        <img src="logo.png" alt="Mutoon Logo" style="max-width: 120px; height: auto; margin: 0 auto 1.5rem; display: block;">
         <div class="footer-logo">متون</div>
         <div class="footer-content">
             <p>Making Islamic studies accessible to non-Arabic speakers through structured, interactive workbooks. Building bridges between students and sacred knowledge.</p>
+            <p style="color: rgba(201, 169, 98, 0.9); font-weight: 600; margin-top: 1rem;">
+                <a href="mailto:contact@mutoon.co.uk" style="color: inherit; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#e3ca8a'" onmouseout="this.style.color='rgba(201, 169, 98, 0.9)'">
+                    contact@mutoon.co.uk
+                </a>
+            </p>
         </div>
         
         <!-- Social Media Icons -->
@@ -1808,15 +1968,44 @@
     </script>
 
     <script>
-        // Add active state to nav items on click
+        // Navigation section tracking
         const navItems = document.querySelectorAll('nav li:not(.slide)');
+        const sections = document.querySelectorAll('section[id]');
         
+        // Update active nav item based on scroll position
+        function updateActiveSection() {
+            const scrollPosition = window.scrollY + 150; // Offset for navbar height
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                        const link = item.querySelector('a');
+                        if (link && link.getAttribute('href') === `#${sectionId}`) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', updateActiveSection);
+        
+        // Add click handler for nav items
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navItems.forEach(nav => nav.classList.remove('active'));
                 item.classList.add('active');
             });
         });
+        
+        // Call once on load
+        updateActiveSection();
 
         // Smooth parallax effect on mouse move
         document.addEventListener('mousemove', (e) => {
@@ -1880,7 +2069,7 @@
             carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             
             // Update current slide
-            currentSlide = Math.max(0, Math.min(3, currentSlide + direction));
+            currentSlide = Math.max(0, Math.min(6, currentSlide + direction));
             updateIndicators();
             resetAutoScroll();
         }
@@ -1907,7 +2096,7 @@
         }
 
         function autoScroll() {
-            currentSlide = (currentSlide + 1) % 4;
+            currentSlide = (currentSlide + 1) % 7;
             goToSlide(currentSlide);
         }
 
