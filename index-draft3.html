@@ -1493,11 +1493,12 @@
                         <h3 class="workbook-card-title">Glorification of Knowledge</h3>
                         <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #666; font-family: 'Amiri', serif; font-style: italic;">تعظيم قدر الصلاة</p>
                         <p style="margin: 0.3rem 0 0.8rem; font-size: 0.85rem; color: #888; font-weight: 600;">By Shaykh Salih Al-Usaymi</p>
-                        <a href="#contact" 
+                        <a href="https://www.amazon.co.uk/dp/191928012X" 
+                           target="_blank"
+                           rel="noopener noreferrer"
                            style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #c9a962 0%, #e3ca8a 100%); color: #0a1628; font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 4px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(201, 169, 98, 0.3);"
                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(201, 169, 98, 0.5)';"
-                           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(201, 169, 98, 0.3)';"
-                           onclick="event.preventDefault(); document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">
+                           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(201, 169, 98, 0.3)';">
                             Order Now
                         </a>
                     </div>
@@ -2235,6 +2236,16 @@
             formMessage.textContent = text;
             formMessage.className = `form-message ${type}`;
             formMessage.style.display = 'block';
+            formMessage.setAttribute('role', 'alert');
+        }
+
+        function hideMessage() {
+            formMessage.style.display = 'none';
+            formMessage.removeAttribute('role');
+        }
+    </script>
+</body>
+</html>
             formMessage.setAttribute('role', 'alert');
         }
 
