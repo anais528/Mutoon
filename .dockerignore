@@ -1,0 +1,25 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+
+# Development files
+.DS_Store
+.vscode
+node_modules
+npm-debug.log
+
+# Draft files (keep only draft3)
+index-draft1.html
+index-draft2.html
+
+# Videos
+*.mp4
+
+# Temporary files
+*.tmp
+*.log
