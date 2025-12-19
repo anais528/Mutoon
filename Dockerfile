@@ -9,6 +9,9 @@ COPY *.jpeg /usr/share/nginx/html/
 COPY *.png /usr/share/nginx/html/
 COPY *.jpg /usr/share/nginx/html/
 
+# Copy covers directory
+COPY covers/ /usr/share/nginx/html/covers/
+
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
