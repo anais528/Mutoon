@@ -2,7 +2,7 @@
 FROM nginx:alpine
 
 # Copy the HTML file to nginx's default directory
-COPY index-draft3.html /usr/share/nginx/html/index.html
+COPY index.html /usr/share/nginx/html/index.html
 
 # Copy all image files
 COPY *.jpeg /usr/share/nginx/html/
